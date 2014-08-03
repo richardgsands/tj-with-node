@@ -1,0 +1,3 @@
+.gallery-thumbnails
+  a.gallery-thumbnail(ng-repeat="image in galleryImages", href="{{image.image}}")
+    img(ng-src="{{image.image}}")
