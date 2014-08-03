@@ -1,23 +1,39 @@
-div(ng-include='"components/navbar/navbar.html"')
-
-header#banner.hero-unit
-  .container
-    h1 'Allo, 'Allo!
-    p.lead Kick-start your next web app with Angular Fullstack
-    img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
-
 .container
-  .row
-    .col-lg-12
-      h1.page-header Features:
-      ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
-        li
-          a(href='#', tooltip='{{thing.info}}')
-            | {{thing.name}}
+  // Fixed-position
+  .sidepane
+    .header-full
+      .header-carousel
+        // Dissolving Carousel
+        .image-container
+          .img-dummy
+          img(ng-repeat="image in carouselImages", ng-src="{{image}}", ng-class="{show: $index==currentImageIndex}")
+        // Audio player
+        .sidebar-widget-control.margin-top.margin-left(ng-click="togglePlaying()", ng-class="{playing: playing}")
+          div(ng-hide="playing")
+            span.glyphicon.glyphicon-volume-up.spacer-right.valign-middle
+            span.valign-middle Listen
+          div(ng-show="playing")
+            span.glyphicon.glyphicon-volume-off.spacer-right.valign-middle
+            span.valign-middle Stop listening
+        .sidebar-section-fade.listen-display.margin-left.margin-top-sm(ng-class="{playing: playing}")
+          span.listen-track-button.glyphicon.glyphicon-step-backward.spacer-right.valign-middle.pull-left(ng-click="previousTrack()", ng-disabled="!playing")
+          span(ng-hide="playing") No track playing
+          //span {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+          marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+          span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
+        div(ng-repeat="track in tracks") {{track.path}}
+        audio(media-player="audio", playlist="tracks")
+          //source(ng-repeat="track in tracks", src="{{track.path}}")
 
-footer.footer
-  .container
-    p
-      a(href='https://twitter.com/tyhenkel') @tyhenkel
-      = ' | '
-      a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues
+  // Main section
+  .main-content
+    div
+      img.header-logo(src="assets/images/background_vectorized.png")
+    // Sections
+    div {{$location}}
+    ul.nav
+      li(ng-repeat="section in navSections", ng-class="{ active: isActive('{{section.url}}')}")
+        //a(href='#{{section.url}}') {{section.title}}
+        a(ui-sref="{{section.state}}") {{section.title}}
+    // Main content
+    div(ui-view="")
