@@ -5,7 +5,7 @@ var navSections = [
     { title: 'Biography',   state: 'main.biography',    url: '/biography' },    // If no templateUrl, this will be views{{url}}.html
     { title: 'Education',   state: 'main.education',    url: '/education' },
     { title: 'Ensembles',   state: 'main.ensembles',    url: '/ensembles' },
-    { title: 'Contact',     state: 'main.contact',      url: '/contact' },
+    { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
     { title: 'Links',       state: 'main.links',        url: '/links' }
 ];
@@ -163,27 +163,32 @@ angular.module('tjWithNodeApp')
             $('.gallery-thumbnail').fancybox();
         });
 
-        /*
-         $scope.direction = 'left';
-         $scope.currentIndex = 0;
+    })
 
-         $scope.setCurrentSlideIndex = function (index) {
-         $scope.direction = (index > $scope.currentIndex) ? 'left' : 'right';
-         $scope.currentIndex = index;
-         };
+    .controller('ContactCtrl', function($scope, $rootScope, $interval, $location, $http) {
 
-         $scope.isCurrentSlideIndex = function (index) {
-         return $scope.currentIndex === index;
-         };
+        $scope.message = {};
+        $scope.success = false;
+        $scope.error = false;
+        $scope.sending = false;
 
-         $scope.prevSlide = function () {
-         $scope.direction = 'left';
-         $scope.currentIndex = ($scope.currentIndex < $scope.slides.length - 1) ? ++$scope.currentIndex : 0;
-         };
+        $scope.submit = function() {
+            $scope.success = false;
+            $scope.error = false;
+            $scope.sending = true;
 
-         $scope.nextSlide = function () {
-         $scope.direction = 'right';
-         $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.slides.length - 1;
-         };
-         */
+            $http.post('/api/messages/sendMessage', $scope.message, {timeout: 5000})
+                .success(function() {
+                   $scope.success = true;
+                   $scope.message = {};
+                   $scope.sending = false;
+                })
+                .error(function(response) {
+                    console.log("Error", response);
+                    $scope.error = response;
+                    $scope.sending = false;
+                })
+
+        }
+
     });

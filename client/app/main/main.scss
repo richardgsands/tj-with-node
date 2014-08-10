@@ -248,3 +248,42 @@ body {
   margin-left: 20px;
 }
 /* END TEXT IMAGES */
+
+/* CONTACT FORM */
+.contact-field {
+  margin-bottom: 10px;
+
+  .contact-field-label {
+
+  }
+
+  input, textarea {
+    width: 100%;
+    border: solid 1px $brand-primary;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+
+}
+
+button.contact-submit {
+  background: $brand-primary;
+  color: white;
+
+  border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+}
+
+/* END CONTACT FORM */
+
+.alert-info {
+  color: $brand-primary;
+  background-color: lighten($brand-primary, 50%);
+  border-color: lighten($brand-primary, 30%);
+}

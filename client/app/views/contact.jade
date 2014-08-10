@@ -1,0 +1,15 @@
+.alert.alert-info(ng-show="success") Thank you for your message!
+.alert.alert-danger(ng-show="error") Error sending message: {{error}}
+form(ng-submit="submit()")
+  .contact-field
+    .contact-field-label Your name
+    input(ng-model="message.name", required="")
+  .contact-field
+    .contact-field-label Your email address
+    input(ng-model="message.email", required="", type="email")
+  .contact-field
+    .contact-field-label Your message
+    textarea(ng-model="message.message", required="")
+  button.contact-submit.pull-right(type="submit")
+    span(ng-show="!sending") Send message!
+    span(ng-show="sending") Sending...
