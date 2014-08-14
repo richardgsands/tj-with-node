@@ -395,7 +395,7 @@ module.exports = function (grunt) {
       dist: [
         'jade',
         'sass',
-        'imagemin',
+        //'imagemin',
         'svgmin'
       ]
     },
