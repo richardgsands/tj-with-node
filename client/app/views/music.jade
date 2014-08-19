@@ -1,0 +1,11 @@
+//.widget-control.black.margin-left(ng-click="togglePlaying()", ng-class="{playing: playing}")
+//  div(ng-hide="playing")
+//    span.glyphicon.glyphicon-volume-up.spacer-right.valign-middle
+//    span.valign-middle Listen
+//  div(ng-show="playing")
+//    span.glyphicon.glyphicon-volume-off.spacer-right.valign-middle
+//    span.valign-middle Stop listening
+.track-list
+  .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
+    span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon
+    span.track-item-text {{track.composer}} - {{track.title}} ({{track.instrument}})

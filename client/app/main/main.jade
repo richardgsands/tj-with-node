@@ -8,22 +8,24 @@
           .img-dummy
           img(ng-repeat="image in carouselImages", ng-src="{{image}}", ng-class="{show: $index==currentImageIndex}")
         // Audio player
-        .sidebar-widget-control.margin-top.margin-left(ng-click="togglePlaying()", ng-class="{playing: playing}")
-          div(ng-hide="playing")
-            span.glyphicon.glyphicon-volume-up.spacer-right.valign-middle
-            span.valign-middle Listen
-          div(ng-show="playing")
-            span.glyphicon.glyphicon-volume-off.spacer-right.valign-middle
-            span.valign-middle Stop listening
-        .sidebar-section-fade.listen-display.margin-left.margin-top-sm(ng-class="{playing: playing}")
-          span.listen-track-button.glyphicon.glyphicon-step-backward.spacer-right.valign-middle.pull-left(ng-click="previousTrack()", ng-disabled="!playing")
-          span(ng-hide="playing") No track playing
-          //span {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
-          marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
-          span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
-        div(ng-repeat="track in tracks") {{track.path}}
-        audio(media-player="audio", playlist="tracks")
-          //source(ng-repeat="track in tracks", src="{{track.path}}")
+        .audio-container.margin-top
+          .widget-control.margin-left(ng-click="togglePlaying()", ng-class="{playing: playing}")
+            div(ng-hide="playing")
+              span.glyphicon.glyphicon-volume-up.spacer-right.valign-middle
+              span.valign-middle Listen
+            div(ng-show="playing")
+              span.glyphicon.glyphicon-volume-off.spacer-right.valign-middle
+              span.valign-middle Stop listening
+          .sidebar-section-fade.listen-display.margin-left.margin-top-sm(ng-class="{playing: playing}")
+            span.listen-track-button.glyphicon.glyphicon-step-backward.spacer-right.valign-middle.pull-left(ng-click="previousTrack()", ng-disabled="!playing")
+            span(ng-hide="playing") No track playing
+            //span {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+            marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+            span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
+          div(ng-repeat="track in tracks") {{track.path}}
+          audio(media-player="audio", playlist="tracks")
+          .widget-control.font-sm.align-center.margin-top-sm
+            div(ui-sref="main.music") View all tracks
 
   // Main section
   .main-content
@@ -35,5 +37,13 @@
       li(ng-repeat="section in navSections", ng-class="{ active: isActive('{{section.url}}')}")
         //a(href='#{{section.url}}') {{section.title}}
         a(ui-sref="{{section.state}}") {{section.title}}
-    // Main content
-    div(ui-view="")
+      .stave-background
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+
+    // View content
+    .view-content
+      div(ui-view="")

@@ -7,6 +7,7 @@ var navSections = [
     { title: 'Ensembles',   state: 'main.ensembles',    url: '/ensembles' },
     { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
+    { title: 'Music',       state: 'main.music',        url: '/music' },
     { title: 'Links',       state: 'main.links',        url: '/links' }
 ];
 
@@ -79,80 +80,91 @@ var tracks = [
 angular.module('tjWithNodeApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location) {
 
-    /* NAVIGATION */
-    $scope.navSections = navSections;
-    $rootScope.$on("$locationChangeStart", function(event, next, current) {
-        $scope.path = next;
-    });
-    $scope.isActive = function (viewLocation) {
-        return viewLocation === $location.path();
-    };
-
-
-    /* IMAGES */
-    $scope.carouselImages = carouselImages;
-    $scope.currentImageIndex = 0;
-    $interval(function() {
-        if ($scope.currentImageIndex >= $scope.carouselImages.length-1) {
-            $scope.currentImageIndex = 0;
-        } else {
-            $scope.currentImageIndex += 1;
-        }
-    }, 10000);
-
-    /* AUDIO */
-
-    $scope.playing = false;
-    $scope.tracks = tracks;
-    var currentTrackIndex = 0;
-    $scope.currentTrack = tracks[0];
-
-    $scope.togglePlaying = function() {
-        $scope.playing = !$scope.playing;
-        if ($scope.playing) {
-            $scope.audio.play();
-        } else {
-            $scope.audio.pause();
-        }
-    };
-
-    $scope.previousTrack = function() {
-        if (!$scope.playing) {
-            return;
-        }
-
-        var newIndex = currentTrackIndex - 1;
-        if (newIndex < 0) {
-            newIndex = 0;
-        }
-        currentTrackIndex = newIndex;
-        refreshTrack();
-    };
-
-    $scope.nextTrack = function() {
-        if (!$scope.playing) {
-            return;
-        }
-
-        var newIndex = currentTrackIndex + 1;
-        if (newIndex > $scope.tracks.length-1) {
-            newIndex = $scope.tracks.length-1;
-        }
-        currentTrackIndex = newIndex;
-        refreshTrack();
-    };
-
-    function refreshTrack() {
-        console.log(currentTrackIndex);
-        $scope.currentTrack = $scope.tracks[currentTrackIndex];
-        $scope.audio.play(currentTrackIndex);
-    }
-
-    setTimeout(function() {
-        $scope.audio.on('ended', function (evt) {
-            console.log('audio ended');
+        /* NAVIGATION */
+        $scope.navSections = navSections;
+        $rootScope.$on("$locationChangeStart", function(event, next, current) {
+            $scope.path = next;
         });
-    }, 500);
+        $scope.isActive = function (viewLocation) {
+            return ('/main' + viewLocation) === $location.path();
+        };
+
+
+        /* IMAGES */
+        $scope.carouselImages = carouselImages;
+        $scope.currentImageIndex = 0;
+        $interval(function() {
+            if ($scope.currentImageIndex >= $scope.carouselImages.length-1) {
+                $scope.currentImageIndex = 0;
+            } else {
+                $scope.currentImageIndex += 1;
+            }
+        }, 10000);
+
+        /* AUDIO */
+
+        $scope.playing = false;
+        $scope.tracks = tracks;
+        $scope.currentTrackIndex = 0;
+        $scope.currentTrack = tracks[0];
+
+        $scope.togglePlaying = function() {
+            $scope.playing = !$scope.playing;
+            if ($scope.playing) {
+                $scope.audio.play();
+            } else {
+                $scope.audio.pause();
+            }
+        };
+
+        $scope.previousTrack = function() {
+            if (!$scope.playing) {
+                return;
+            }
+
+            var newIndex = $scope.currentTrackIndex - 1;
+            if (newIndex < 0) {
+                newIndex = 0;
+            }
+            $scope.currentTrackIndex = newIndex;
+            refreshTrack();
+        };
+
+        $scope.nextTrack = function() {
+            if (!$scope.playing) {
+                return;
+            }
+
+            var newIndex = $scope.currentTrackIndex + 1;
+            if (newIndex > $scope.tracks.length-1) {
+                newIndex = $scope.tracks.length-1;
+            }
+            $scope.currentTrackIndex = newIndex;
+            refreshTrack();
+        };
+
+        $scope.playTrack = function($index) {
+            $scope.playing = true;
+            $scope.currentTrackIndex = $index;
+            refreshTrack();
+        };
+
+        function refreshTrack() {
+            $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
+            $scope.audio.play($scope.currentTrackIndex);
+        }
+
+        // Bind audio events (using timeout to ensure audio control is initialised)
+        setTimeout(function() {
+
+            $scope.audio.on('loadeddata', function (evt) {
+                // Zero based array        // One based array
+                $scope.currentTrackIndex = $scope.audio.currentTrack - 1;
+                $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
+            });
+
+        }, 1000);
+
 
     })
 
