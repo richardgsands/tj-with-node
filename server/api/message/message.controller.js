@@ -16,7 +16,6 @@ var transporter = nodemailer.createTransport({
 });
 console.log('Transport created - messages going to ' + emailToAddress);
 
-
 // Get list of messages
 exports.sendMessage = function(req, res) {
 

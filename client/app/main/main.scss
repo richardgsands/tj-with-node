@@ -398,3 +398,12 @@ button.contact-submit {
   background-color: lighten($brand-primary, 50%);
   border-color: lighten($brand-primary, 30%);
 }
+
+.btn-primary {
+  background: $brand-primary;
+  border-color: darken($brand-primary, 10%);
+
+  &:hover {
+    background: darken($brand-primary, 5%);
+  }
+}
