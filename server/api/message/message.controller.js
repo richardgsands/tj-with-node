@@ -2,6 +2,10 @@
 
 var _ = require('lodash');
 var nodemailer = require("nodemailer");
+
+// Define email address to send messages to:
+var emailToAddress = 'tracy@angel.vg';
+
 // Create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -10,7 +14,7 @@ var transporter = nodemailer.createTransport({
         pass: '&1sYIpjCS1uH'
     }
 });
-console.log('Transport created', transporter);
+console.log('Transport created - messages going to ' + emailToAddress);
 
 
 // Get list of messages
