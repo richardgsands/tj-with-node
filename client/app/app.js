@@ -9,29 +9,11 @@ angular.module('tjWithNodeApp', [
   'ui.bootstrap',
   'mediaPlayer'
 ])
-//  .config(function ($routeProvider, $locationProvider) {
-//
-//    navSections.forEach(function(section) {
-//        $routeProvider.when(section.url, {
-//            templateUrl: section.templateUrl || ( 'app/views' + section.url + '.html' ),
-//            controller: section.controller
-//        });
-//
-//    });
-//
-////    $routeProvider
-////        .otherwise({
-////        redirectTo: '/'
-////        });
-//
-//    $locationProvider.html5Mode(true);
-//
-//  });
 
 .config(function($stateProvider, $urlRouterProvider) {
     //
     // For any unmatched url, redirect to /
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/main/");
 
     $stateProvider.state('main', {
         url: "/main",

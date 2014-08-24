@@ -74,6 +74,12 @@ var tracks = [
         composer: "Bernard Heyes",
         title: "Humoresque",
         src: "assets/tracks/TracyJames-Heyes.mp3"
+    },
+    {
+        instrument: "Flute",
+        composer: "Arnold Cooke",
+        title: "Sonatina for flute and piano - 1st Mvt",
+        src: "assets/tracks/TracyJames-Cooke.mp3"
     }
 ];
 

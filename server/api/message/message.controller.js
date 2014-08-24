@@ -3,7 +3,13 @@
 var _ = require('lodash');
 var nodemailer = require("nodemailer");
 // Create reusable transporter object using SMTP transport
-var transporter = nodemailer.createTransport();
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'm7wniN20Gmzv',
+        pass: '&1sYIpjCS1uH'
+    }
+});
 console.log('Transport created', transporter);
 
 
