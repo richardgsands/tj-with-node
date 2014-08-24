@@ -22,6 +22,15 @@ $sidepane-threshold-screensize: 1002px;
 .align-center { text-align: center; }
 .max-width-100pc { max-width: 100% }
 
+a.no-highlight {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a.hover-highlight:hover {
+  color: lighten($brand-primary, 20%);
+}
+
 body {
   padding-left: 0;
   padding-right: 0;
@@ -275,6 +284,20 @@ body {
     max-width: 150px;
   }
 
+}
+
+.image-text-logo {
+  max-height: 60px;
+  width: auto;
+}
+
+.image-text-fb {
+  max-height: 40px;
+  width: auto;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .float-left {
