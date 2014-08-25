@@ -9,3 +9,5 @@
   .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
     span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon
     span.track-item-text {{track.composer}} - {{track.title}} ({{track.instrument}})
+  .margin-top
+    i Piano - David Bullen and Richard Sands
