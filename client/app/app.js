@@ -10,10 +10,14 @@ angular.module('tjWithNodeApp', [
   'mediaPlayer'
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     //
     // For any unmatched url, redirect to /
     $urlRouterProvider.otherwise("/main/");
+
+    $locationProvider
+        .html5Mode(true)
+        .hashPrefix('!');
 
     $stateProvider.state('main', {
         url: "/main",
