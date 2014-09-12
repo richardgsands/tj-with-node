@@ -177,6 +177,14 @@ angular.module('tjWithNodeApp')
     .controller('GalleryCtrl', function($scope, $rootScope, $interval, $location) {
         $scope.galleryImages = galleryImages;
 
+        // This block prevents router from redirecting to route when image is 'opened'
+        $scope.$on('$locationChangeStart',
+            function (event, next, current) {
+                if (next.indexOf('/images/') > 0) {
+                    event.preventDefault();
+                }
+            });
+
         $(document).ready(function() {
             $('.gallery-thumbnail').fancybox();
         });
