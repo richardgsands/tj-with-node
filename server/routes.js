@@ -15,7 +15,8 @@ module.exports = function(app) {
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
 
-  // Legacy routes from old website links
+
+    // Legacy routes from old website links
   var oldPages = [
       { section:'biography',	suffix: '.htm'  },
       { section:'education', 	suffix: '.htm'  },
@@ -33,8 +34,8 @@ module.exports = function(app) {
   });
 
   // All other routes should redirect to the index.html
-  app.route('/*')
-    .get(function(req, res) {
-      res.sendfile(app.get('appPath') + '/index.html');
-    });
+//  app.route('/main/*')
+//    .get(function(req, res) {
+//      res.sendfile(app.get('appPath') + '/index.html');
+//    });
 };

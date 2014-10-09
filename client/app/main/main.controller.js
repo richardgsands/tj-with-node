@@ -7,7 +7,7 @@ var navSections = [
     { title: 'Ensembles',   state: 'main.ensembles',    url: '/ensembles' },
     { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
-    { title: 'Music',       state: 'main.music',        url: '/music' },
+    { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
     { title: 'Links',       state: 'main.links',        url: '/links' }
 ];
 
@@ -82,6 +82,7 @@ var tracks = [
         src: "assets/tracks/TracyJames-Cooke.mp3"
     }
 ];
+
 
 angular.module('tjWithNodeApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location) {

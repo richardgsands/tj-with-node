@@ -18,14 +18,20 @@
               span.valign-middle Stop listening
           .sidebar-section-fade.listen-display.margin-left.margin-top-sm(ng-class="{playing: playing}")
             span.listen-track-button.glyphicon.glyphicon-step-backward.spacer-right.valign-middle.pull-left(ng-click="previousTrack()", ng-disabled="!playing")
-            span(ng-hide="playing") No track playing
+            span(ng-hide="playing") No track selected
             //span {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
             marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
             span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
           div(ng-repeat="track in tracks") {{track.path}}
           audio(media-player="audio", playlist="tracks")
+          .track-list(ng-show="showTrackList")
+            .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
+              span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon
+              span.track-item-text {{track.composer}} - {{track.title}} ({{track.instrument}})
           .widget-control.font-sm.align-center.margin-top-sm
-            div(ui-sref="main.music") View all tracks
+            div(ng-click="showTrackList=!showTrackList")
+              span(ng-show="!showTrackList") View all tracks
+              span(ng-show="showTrackList") Hide tracks
 
   // Main section
   .main-content
@@ -34,7 +40,7 @@
     // Sections
     div {{$location}}
     ul.nav
-      li(ng-repeat="section in navSections", ng-class="{ active: isActive('{{section.url}}')}")
+      li(ng-repeat="section in navSections", ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
         //a(href='#{{section.url}}') {{section.title}}
         a(ui-sref="{{section.state}}") {{section.title}}
       .stave-background

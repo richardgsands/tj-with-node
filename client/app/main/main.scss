@@ -21,6 +21,23 @@ $sidepane-threshold-screensize: 1002px;
 .valign-middle { vertical-align: middle; }
 .align-center { text-align: center; }
 .max-width-100pc { max-width: 100% }
+.max-width-30pc { max-width: 30% }
+
+@media (min-width: $sidepane-threshold-screensize + 1 ) {
+  .small-screen-only {
+    display: none !important;
+  }
+}
+@media (max-width: $sidepane-threshold-screensize) {
+  .large-screen-only {
+    display: none !important;
+  }
+}
+
+h1, h2, h3 {
+  font-family: 'Niconne', cursive;
+  color: $brand-primary;
+}
 
 a.no-highlight {
   color: inherit;
@@ -102,6 +119,18 @@ body {
       border-color: rgba(white, 0.7);
       border-radius: 20px;
       padding: 10px;
+
+      .track-list {
+        color: white;
+
+        .track-item {
+          opacity: 0.4;
+
+          &.playing {
+            opacity: 0.8;
+          }
+        }
+      }
     }
 
 
