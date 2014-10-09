@@ -3,7 +3,6 @@
 var _ = require('lodash');
 var nodemailer = require("nodemailer");
 var EmailSettings = JSON.parse( require('fs').readFileSync('/devconfig/tj-with-node/tj-gmail-settings.json', { encoding: 'utf8' }) );
-console.log(EmailSettings);
 
 // Create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport( EmailSettings.nodemailerTransport );
@@ -28,21 +27,10 @@ exports.sendMessage = function(req, res) {
             res.send(200);
         }
     });
-    /*
-    mail({
-        from: req.body.name + "<" + req.body.email + ">", // sender address
-        to: "richardgsands@gmail.com", // list of receivers
-        subject: "Message from tracyjames.co.uk", // Subject line
-        text: req.body.message // plaintext body
-    });
-    */
-
 
 };
 
 function sendEmail(name, email, message, cb) {
-    // NB! No need to recreate the transporter object. You can use
-    // the same transporter object for all e-mails
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
@@ -54,10 +42,10 @@ function sendEmail(name, email, message, cb) {
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info){
-        if(error){
+        if (error) {
             console.log(error);
             cb(error);
-        }else{
+        } else {
             console.log('Message sent: ' + info.response);
             cb();
         }
