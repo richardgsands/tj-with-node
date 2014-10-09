@@ -16,7 +16,7 @@ require('./config/express')(app);
 //require('./routes')(app);
 
 // Server public folder (for PDFs as these are not working from client assets folder)
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/serverPublic'));
 
 // Start server
 server.listen(config.port, config.ip, function () {
