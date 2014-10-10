@@ -22,20 +22,22 @@ var carouselImages = [
     'assets/images/carousel/gallery12_crsl.JPG'
 ];
 
+var galleryImagesLocationHires = 'assets/images/gallery/hires/';
+var galleryImagesLocationLores = 'assets/images/gallery/lores/';
 var galleryImages = [
-    {image:'assets/images/gallery/gallery6.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery7.JPG', description: 'Tracy James - flute'},
-    {image:'assets/images/gallery/gallery8.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery9.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery2_portrait.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery14_head.JPG', description: 'Tracy James - flute'},
-    {image:'assets/images/gallery/gallery3_portrait.JPG', description: 'Tracy James - clarinet'},
-    {image:'assets/images/gallery/gallery13_head.JPG', description: 'Tracy James - flute'},
-    {image:'assets/images/gallery/gallery5_portrait.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery10.JPG', description: 'Tracy James - flute'},
-    {image:'assets/images/gallery/gallery12.JPG', description: 'Tracy James - saxophone'},
-    {image:'assets/images/gallery/gallery4.JPG', description:  'Tracy James - flute, clarinet and saxophone'},
-    {image:'assets/images/gallery/gallery11.JPG', description: 'Tracy James - flute'}
+    {image:'gallery6.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery7.JPG', description: 'Tracy James - flute'},
+    {image:'gallery8.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery9.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery2_portrait.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery14_head.JPG', description: 'Tracy James - flute'},
+    {image:'gallery3_portrait.JPG', description: 'Tracy James - clarinet'},
+    {image:'gallery13_head.JPG', description: 'Tracy James - flute'},
+    {image:'gallery5_portrait.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery10.JPG', description: 'Tracy James - flute'},
+    {image:'gallery12.JPG', description: 'Tracy James - saxophone'},
+    {image:'gallery4.JPG', description:  'Tracy James - flute, clarinet and saxophone'},
+    {image:'gallery11.JPG', description: 'Tracy James - flute'}
 ]
 
 var tracks = [
@@ -189,6 +191,8 @@ angular.module('tjWithNodeApp')
     })
 
     .controller('GalleryCtrl', function($scope, $rootScope, $interval, $location) {
+        $scope.galleryImagesLocationHires = galleryImagesLocationHires;
+        $scope.galleryImagesLocationLores = galleryImagesLocationLores;
         $scope.galleryImages = galleryImages;
 
         // This block prevents router from redirecting to route when image is 'opened'
