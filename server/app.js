@@ -13,10 +13,7 @@ var config = require('./config/environment');
 var app = express();
 var server = require('http').createServer(app);
 require('./config/express')(app);
-//require('./routes')(app);
-
-// Server public folder (for PDFs as these are not working from client assets folder)
-app.use(express.static(__dirname + '/serverPublic'));
+require('./routes')(app);
 
 // Start server
 server.listen(config.port, config.ip, function () {

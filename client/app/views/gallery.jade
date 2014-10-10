@@ -1,3 +1,3 @@
 .gallery-thumbnails
-  a.gallery-thumbnail(ng-repeat="image in galleryImages", href="{{image.image}}")
+  a.gallery-thumbnail(rel='fancybox-thumb', ng-repeat="image in galleryImages", href="{{image.image}}")
     img(ng-src="{{image.image}}")

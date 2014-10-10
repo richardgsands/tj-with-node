@@ -83,7 +83,6 @@ var tracks = [
     }
 ];
 
-
 angular.module('tjWithNodeApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location) {
 
@@ -107,6 +106,20 @@ angular.module('tjWithNodeApp')
                 $scope.currentImageIndex += 1;
             }
         }, 10000);
+
+        /* EVENTS */
+        // Get static JSON
+        $http.get('assets/upcomingEvents.json', $scope.message, {timeout: 5000})
+            .success(function(response) {
+                console.log(response);
+                var allEvents = response;
+                console.log(allEvents[1]);
+                $scope.upcomingEvents = allEvents;
+            })
+            .error(function(response) {
+                console.log("Error", response);
+                $scope.upcomingEvents = {};
+            });
 
         /* AUDIO */
 
@@ -187,7 +200,19 @@ angular.module('tjWithNodeApp')
             });
 
         $(document).ready(function() {
-            $('.gallery-thumbnail').fancybox();
+            $(".gallery-thumbnail").fancybox({
+                //prevEffect	: 'none',
+                //nextEffect	: 'none',
+                helpers	: {
+                    title	: {
+                        type: 'outside'
+                    },
+                    thumbs	: {
+                        width	: 50,
+                        height	: 50
+                    }
+                }
+            });
         });
 
     })

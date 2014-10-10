@@ -67,7 +67,7 @@ body {
 }
 
 .header-logo {
-  background: url('/images/background.svg') no-repeat fixed center;
+  //background: url('/images/background.svg') no-repeat fixed center;
   width: 400px;
 }
 
@@ -75,6 +75,7 @@ body {
 /* SIDEPANE */
 .sidepane {
   position: fixed;
+  overflow-x: auto;
   width: $sidepane-width;
   left: 0;
   top: 0;
@@ -114,14 +115,19 @@ body {
 
     }
 
-    .audio-container {
-      border: solid 1px white;
+    .sidepane-container {
+      border-top: solid 1px white;
       border-color: rgba(white, 0.7);
-      border-radius: 20px;
-      padding: 10px;
+//      border-radius: 20px;
+      padding: 10px 0;
+
+      color: white;
+
+    }
+
+    .audio-container {
 
       .track-list {
-        color: white;
 
         .track-item {
           opacity: 0.4;
@@ -131,6 +137,10 @@ body {
           }
         }
       }
+    }
+
+    .events-container {
+      opacity: 0.8;
     }
 
 
