@@ -7,11 +7,12 @@ angular.module('tjWithNodeApp', [
   'ui.router',
   //'ngRoute',
   'ui.bootstrap',
-  'mediaPlayer'
+  'mediaPlayer',
+  'angularMoment'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    //
+
     // For any unmatched url, redirect to /
     $urlRouterProvider.otherwise("/main/");
 

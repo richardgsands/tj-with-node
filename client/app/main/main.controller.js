@@ -7,7 +7,7 @@ var navSections = [
     { title: 'Ensembles',   state: 'main.ensembles',    url: '/ensembles' },
     { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
-    { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
+    { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: false },
     { title: 'Links',       state: 'main.links',        url: '/links' }
 ];
 
@@ -115,8 +115,49 @@ angular.module('tjWithNodeApp')
             .success(function(response) {
                 console.log(response);
                 var allEvents = response;
-                console.log(allEvents[1]);
-                $scope.upcomingEvents = allEvents;
+                allEvents = allEvents || [];
+
+                $scope.upcomingEvents = _.filter(allEvents, function(event) {
+
+                    // Exclude if end date is before today
+                    if ( moment(event.endDate).isBefore(moment(), 'day') ) {
+                        return false
+
+                    } else {
+                        // Set timeFromNow
+                        if ( moment(event.endDate).isSame(moment(), 'day') ) {
+                            event.timeFromNow = "Last show today"
+
+                        } else if ( moment(event.startDate).isSame(moment(), 'day') ) {
+                            event.timeFromNow = "Starts today"
+
+                        } else if ( moment(event.startDate).isBefore(moment(), 'day') ) {
+                            event.timeFromNow = "Ends " + getDaysFromNowDisplay( event.endDate );
+
+                        } else {
+                            event.timeFromNow = "Starts " + getDaysFromNowDisplay( event.startDate );
+                        }
+
+
+                        return true;
+                    };
+
+                    function getDaysFromNowDisplay(date) {
+                        // Before now
+                        if ( moment(date).isBefore(moment(), 'day') ) {
+                            return moment(date).fromNow();
+                        // Today
+                        } else if ( moment(date).isSame(moment(), 'day') ) {
+                            return "today";
+                        // Tomorrow
+                        } else if ( moment(date).isSame( moment().add(1, 'days'), 'day' ) ) {
+                            return "tomorrow";
+                        } else {
+                            return moment(date).add(1, 'days').fromNow();   // Need to add one day, otherwise moment sees a date two days from now as 1 day from now
+                        }
+                    }
+
+                });
             })
             .error(function(response) {
                 console.log("Error", response);

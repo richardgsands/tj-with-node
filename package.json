@@ -16,7 +16,10 @@
     "jade": "~1.2.0",
     "composable-middleware": "^0.3.0",
     "connect-mongo": "^0.4.1",
-    "nodemailer": "~1.1.1"
+    "nodemailer": "~1.1.1",
+    "zombie": "~2.0.6",
+    "url": "~0.10.1",
+    "grunt-html-snapshot": "~0.6.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

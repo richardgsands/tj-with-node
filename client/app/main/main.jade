@@ -35,11 +35,16 @@
 
         // (ng-if="upcomingEvents && upcomingEvents.length")
         .sidepane-container.events-container
-          div(ng-hide="playing")
+          div
             span.glyphicon.glyphicon-calendar.spacer-right.valign-middle
             span.valign-middle Upcoming events
           .event-list
-            .event-item(ng-repeat="event in upcomingEvents") {{event.name}}
+            .event-item(ng-repeat="event in upcomingEvents")
+              a(href="{{event.link}}", target="_blank")
+                .event-item-title {{event.name}}
+                .event-item-location {{event.location}}
+                .event-item-date {{event.startDate|amDateFormat:'ddd, DD MMM'}} to {{event.endDate|amDateFormat:'ddd, DD MMM'}}
+                .event-item-timeago {{event.timeFromNow}}
 
 
 
