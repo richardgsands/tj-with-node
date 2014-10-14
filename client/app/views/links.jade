@@ -1,41 +1,13 @@
 .links-list
-  a(href="http://www.facebook.com/pages/Trillium/203895322979643?sk=info", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Trillium
-      .description Two flutes and piano
-  a(href="http://www.stephenbutler-repairs.co.uk/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Stephen Butler
-      .description Instrument repairs
-  a(href="http://www.andyeastwood.com/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Andy Eastwood
-      .description Ukulele
-  a(href="http://www.jillkemp.com/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Jill Kemp
-      .description Recorder
-  a(href="http://www.bernardheyes.org.uk/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Bernard Heyes
-      .description Composer
-  a(href="http://www.notes-upon-notes.com/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title Joanna Wyld
-      .description Writer (Notes upon Notes)
-  a(href="http://www.bymt.co.uk/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title BYMT
-      .description Bromley Youth Music Trust
-  a(href="http://www.stgeorgesbloomsbury.org.uk/", target="_blank").link-item
-    .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
-    div
-      .title St George's, Bloomsbury
-      .description Parish church and concert venue
+  // Twitter
+  a.twitter-follow-button(href='https://twitter.com/TracyJamesFlute', data-show-count='false', data-size='large') Follow @TracyJamesFlute
+    script
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+  // Links
+  .margin-top
+    a(ng-repeat="link in links", href="{{link.link}}", target="_blank").link-item
+      .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
+      div
+        .title {{link.title}}
+        .description {{link.description}}

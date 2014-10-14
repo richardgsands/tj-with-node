@@ -85,6 +85,74 @@ var tracks = [
     }
 ];
 
+var links = [
+    {
+        "title": "Trillium",
+        "description": "Two flutes and piano",
+        "link": "http://www.facebook.com/pages/Trillium/203895322979643?sk=info"
+    },
+    {
+        "title": "Stephen Butler",
+        "description": "Instrument repairs",
+        "link": "http://www.stephenbutler-repairs.co.uk/"
+    },
+    {
+        "title": "Andy Eastwood",
+        "description": "Ukulele",
+        "link": "http://www.andyeastwood.com/"
+    },
+    {
+        "title": "Jill Kemp",
+        "description": "Recorder",
+        "link": "http://www.jillkemp.com/"
+    },
+    {
+        "title": "Bernard Heyes",
+        "description": "Composer",
+        "link": "http://www.bernardheyes.org.uk/"
+    },
+    {
+        "title": "Joanna Wyld",
+        "description": "Writer (Notes upon Notes)",
+        "link": "http://www.notes-upon-notes.com/"
+    },
+    {
+        "title": "BYMT",
+        "description": "Bromley Youth Music Trust",
+        "link": "http://www.bymt.co.uk/"
+    },
+    {
+        "title": "St George's, Bloomsbury",
+        "description": "Parish church and concert venue",
+        "link": "http://www.stgeorgesbloomsbury.org.uk/"
+    },
+    {
+        "title": "Bromley Parish Church",
+        "description": "Parish Church and Concert Venue",
+        "link": "http://www.bromleyparishchurch.org/concerts-and-recitals"
+    },
+    {
+        "title": "Just Flutes",
+        "description": "Europe's largest supplier of flutes and flute music",
+        "link": "www.justflutes.com"
+    },
+    {
+        "title": "Gwalia Male Choir",
+        "description": "Welsh Male Voice Choir",
+        "link": "http://www.gwaliamalevoicechoir.org.uk/"
+    },
+    {
+        "title": "BBIS",
+        "description": "Instrument Insurance",
+        "link": "http://www.brassbandinsuranceservices.co.uk/"
+    },
+    {
+        "title": "East Dulwich Academy",
+        "description": "Academy of Music and Performing Arts",
+        "link": "http://www.eastdulwichacademy.org/"
+    }
+];
+
 angular.module('tjWithNodeApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location) {
 
@@ -109,9 +177,12 @@ angular.module('tjWithNodeApp')
             }
         }, 10000);
 
+        /* LINKS */
+        $scope.links = links;
+
         /* EVENTS */
         // Get static JSON
-        $http.get('assets/upcomingEvents.json', $scope.message, {timeout: 5000})
+        $http.get('assets/cms/upcomingEvents.json', $scope.message, {timeout: 5000})
             .success(function(response) {
                 console.log(response);
                 var allEvents = response;
