@@ -7,7 +7,7 @@ var navSections = [
     { title: 'Ensembles',   state: 'main.ensembles',    url: '/ensembles' },
     { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
-    { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: false },
+    { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
     { title: 'Links',       state: 'main.links',        url: '/links' }
 ];
 
@@ -189,7 +189,7 @@ angular.module('tjWithNodeApp')
                 allEvents = allEvents || [];
 
                 $scope.upcomingEvents = _.filter(allEvents, function(event) {
-                    
+
                     // Exclude if end date is before today
                     if ( moment(event.endDate).isBefore(moment(), 'day') ) {
                         return false
