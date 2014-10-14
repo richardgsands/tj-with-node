@@ -189,7 +189,7 @@ angular.module('tjWithNodeApp')
                 allEvents = allEvents || [];
 
                 $scope.upcomingEvents = _.filter(allEvents, function(event) {
-
+                    
                     // Exclude if end date is before today
                     if ( moment(event.endDate).isBefore(moment(), 'day') ) {
                         return false

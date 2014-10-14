@@ -34,8 +34,8 @@
               span(ng-show="showTrackList") Hide tracks
 
         // (ng-if="upcomingEvents && upcomingEvents.length")
-        .sidepane-container.events-container
-          div
+        .sidepane-container.events-container(ng-if="upcomingEvents.length")
+          .events-container-header
             span.glyphicon.glyphicon-calendar.spacer-right.valign-middle
             span.valign-middle Upcoming events
           .event-list
