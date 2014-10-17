@@ -129,27 +129,27 @@ var links = [
     },
     {
         "title": "Bromley Parish Church",
-        "description": "Parish Church and Concert Venue",
+        "description": "Parish church and concert venue",
         "link": "http://www.bromleyparishchurch.org/concerts-and-recitals"
     },
     {
         "title": "Just Flutes",
         "description": "Europe's largest supplier of flutes and flute music",
-        "link": "www.justflutes.com"
+        "link": "http://www.justflutes.com"
     },
     {
         "title": "Gwalia Male Choir",
-        "description": "Welsh Male Voice Choir",
+        "description": "Welsh male voice choir",
         "link": "http://www.gwaliamalevoicechoir.org.uk/"
     },
     {
         "title": "BBIS",
-        "description": "Instrument Insurance",
+        "description": "Instrument insurance",
         "link": "http://www.brassbandinsuranceservices.co.uk/"
     },
     {
         "title": "East Dulwich Academy",
-        "description": "Academy of Music and Performing Arts",
+        "description": "Academy of music and performing arts",
         "link": "http://www.eastdulwichacademy.org/"
     }
 ];
