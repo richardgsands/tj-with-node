@@ -8,7 +8,8 @@ var navSections = [
     { title: 'Contact',     state: 'main.contact',      url: '/contact',        controller: 'ContactCtrl'},
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
     { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
-    { title: 'Links',       state: 'main.links',        url: '/links' }
+    { title: 'Links',       state: 'main.links',        url: '/links' },
+    { title: 'Twitter',     state: 'main.twitter',      url: '/twitter' }
 ];
 
 var carouselImages = [
