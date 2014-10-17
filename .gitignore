@@ -1,4 +1,5 @@
 .idea
+npm-debug.log
 node_modules
 public
 .tmp
@@ -7,3 +8,4 @@ client/bower_components
 dist
 /server/config/local.env.js
 .DS_Store
+client/assets/cms
