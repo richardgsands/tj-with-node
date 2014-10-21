@@ -34,10 +34,10 @@ function sendEmail(name, email, message, cb) {
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-        from: name + "<" + email + ">", // sender address
+        from: "tmail", // sender address
         to: EmailSettings.emailToAddress, // list of receivers
         subject: "Message from tracyjames.co.uk", // Subject line
-        text: message // plaintext body
+        text: "From: " + name + "\nEmail: " + email + "\n\n" + message // plaintext body
     };
 
     // send mail with defined transport object
