@@ -1,3 +1,5 @@
 # robotstxt.org
 
 User-agent: *
+
+http://178.62.17.175/sitemap.txt
