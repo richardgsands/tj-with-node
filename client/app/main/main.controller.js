@@ -9,7 +9,7 @@ var navSections = [
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
     { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
     { title: 'Links',       state: 'main.links',        url: '/links' },
-    { title: 'Twitter',     state: 'main.twitter',      url: '/twitter' }
+    { title: 'Twitter',     state: 'main.twitter',      url: '/twitter',        controller: 'TwitterCtrl' }
 ];
 
 var carouselImages = [
@@ -332,6 +332,12 @@ angular.module('tjWithNodeApp')
             });
         });
 
+    })
+
+
+
+    .controller('TwitterCtrl', function($scope, $rootScope, $interval, $location) {
+      twttr.widgets.load();
     })
 
     .controller('ContactCtrl', function($scope, $rootScope, $interval, $location, $http) {
