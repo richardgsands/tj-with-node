@@ -2,4 +2,4 @@
 
 User-agent: *
 
-Sitemap: http://178.62.17.175/sitemap.txt
+Sitemap: http://www.tracyjames.co.uk/sitemap.txt

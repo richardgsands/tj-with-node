@@ -1,8 +1,8 @@
-http://178.62.17.175/main/
-http://178.62.17.175/main/biography
-http://178.62.17.175/main/education
-http://178.62.17.175/main/ensembles
-http://178.62.17.175/main/music
-http://178.62.17.175/main/gallery
-http://178.62.17.175/main/contact
-http://178.62.17.175/main/links
+http://www.tracyjames.co.uk/main/
+http://www.tracyjames.co.uk/main/biography
+http://www.tracyjames.co.uk/main/education
+http://www.tracyjames.co.uk/main/ensembles
+http://www.tracyjames.co.uk/main/music
+http://www.tracyjames.co.uk/main/gallery
+http://www.tracyjames.co.uk/main/contact
+http://www.tracyjames.co.uk/main/links
