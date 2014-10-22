@@ -11,10 +11,19 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/messages', require('./api/message'));
 
+  // Legacy CV paths for direct url from search engines
+  app.route('/images/Tracy%20James%20CV.pdf')
+      .get(function(req,res) {
+        res.sendfile(app.get('appPath') + '/assets/files/TracyJamesCV2014.pdf');
+      });
+  app.route('/images/Tracy_James_CV.pdf')
+      .get(function(req,res) {
+        res.sendfile(app.get('appPath') + '/assets/files/TracyJamesCV2014.pdf');
+      });
+
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
    .get(errors[404]);
-
 
     // Legacy routes from old website links
   var oldPages = [
