@@ -14,11 +14,11 @@ module.exports = function(app) {
   // Legacy CV paths for direct url from search engines
   app.route('/images/Tracy%20James%20CV.pdf')
       .get(function(req,res) {
-        res.sendfile(app.get('appPath') + '/assets/files/TracyJamesCV2014.pdf');
+        res.redirect('/assets/files/TracyJamesCV2014.pdf');
       });
   app.route('/images/Tracy_James_CV.pdf')
       .get(function(req,res) {
-        res.sendfile(app.get('appPath') + '/assets/files/TracyJamesCV2014.pdf');
+        res.redirect('/assets/files/TracyJamesCV2014.pdf');
       });
 
   // All undefined asset or api routes should return a 404
