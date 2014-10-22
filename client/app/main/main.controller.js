@@ -9,7 +9,7 @@ var navSections = [
     { title: 'Gallery',     state: 'main.gallery',      url: '/gallery',        controller: 'GalleryCtrl' },
     { title: 'Music',       state: 'main.music',        url: '/music',          smallScreenOnly: true },
     { title: 'Links',       state: 'main.links',        url: '/links' },
-    { title: 'Twitter',     state: 'main.twitter',      url: '/twitter',        controller: 'TwitterCtrl' }
+    { title: 'Twitter',     state: 'main.twitter',      url: '/twitter',        controller: 'TwitterCtrl',    hideLink: true }
 ];
 
 var carouselImages = [

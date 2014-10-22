@@ -55,7 +55,7 @@
     // Sections
     div {{$location}}
     ul.nav
-      li(ng-repeat="section in navSections", ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
+      li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
         //a(href='#{{section.url}}') {{section.title}}
         a(ui-sref="{{section.state}}") {{section.title}}
       .stave-background
