@@ -8,8 +8,11 @@ $highlight-primary: #A7CB1C;
 $highlight-secondary: #6D7F2B;
 
 // VARIABLES
+$screensize-threshold-large: 1002px;
+$screensize-threshold-medium: 650px;
 $sidepane-width: 300px;
-$sidepane-threshold-screensize: 1002px;
+$mobile-menu-width: 150px;
+
 
 .margin-top { margin-top: 20px; }
 .margin-top-sm { margin-top: 10px; }
@@ -20,19 +23,31 @@ $sidepane-threshold-screensize: 1002px;
 .spacer-right { margin-right: 5px; }
 .valign-middle { vertical-align: middle; }
 .align-center { text-align: center; }
-.max-width-100pc { max-width: 100% }
-.max-width-30pc { max-width: 30% }
+.max-width-100pc { max-width: 100%; }
+.max-width-30pc { max-width: 30%; }
+.width-100-pc { width: 100%; }
 
-@media (min-width: $sidepane-threshold-screensize + 1 ) {
+body {
+  position: relative;   // For mobile-menu
+}
+
+@media (min-width: $screensize-threshold-medium + 1 ) {   // i.e. when small is medium or large
   .small-screen-only {
     display: none !important;
   }
 }
-@media (max-width: $sidepane-threshold-screensize) {
+@media (max-width: $screensize-threshold-medium) {     // i.e. when screen is small
+  .medium-or-large-screen-only {
+    display: none !important;
+  }
+}
+@media (max-width: $screensize-threshold-large + 1) {   // i.e. when screen is small or medium
   .large-screen-only {
     display: none !important;
   }
 }
+
+
 
 h1, h2, h3 {
   font-family: 'Niconne', cursive;
@@ -188,7 +203,7 @@ body {
 
 }
 
-@media (max-width: $sidepane-threshold-screensize) {
+@media (max-width: $screensize-threshold-large) {
   .sidepane {
     display: none;
   }
@@ -254,8 +269,22 @@ body {
   padding: 20px;
   margin-left: $sidepane-width;
   max-width: 800px;
+  background: white;
+  z-index: 2;
+  position: relative;
+  min-height: 100%;
+
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -ms-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+  transition: transform 0.5s;
+
+  &.slide-left {
+    transform: translateX(-$mobile-menu-width);
+  }
 }
-@media (max-width: $sidepane-threshold-screensize) {
+@media (max-width: $screensize-threshold-large) {
   // Small screen size
   .main-content {
     margin-left: 0;
@@ -263,14 +292,18 @@ body {
   }
 }
 
+.header-logo-container {
+  position: relative;
+}
+
 .header-logo {
   width: 650px;
   margin-top: 10px;
 }
 
-@media (max-width: $sidepane-threshold-screensize) {
+@media (max-width: $screensize-threshold-large) {
   .header-logo {
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -318,7 +351,89 @@ body {
   }
 
 }
+@media (max-width: $screensize-threshold-large) {
+  .stave-background{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
 
+// Hamburger
+.hamburger {
+  width: 30px;
+  z-index: 9999;
+
+  position: absolute;
+  top: 38%;
+  right: 10px;
+
+  .hamburger-line {
+    background-color: black;
+    border-radius: 2px;
+    height: 4px;
+    margin-bottom: 6px;
+  }
+
+  &.active, &:hover {
+    .hamburger-line {
+      background-color: $brand-primary;
+    }
+  }
+
+}
+
+// Mobile menu
+
+.mobile-menu {
+  position: absolute;
+  overflow-x: auto;
+  width: $mobile-menu-width;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 10px;
+  background: $brand-primary;
+  z-index: 1;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 10px;
+      display: block;
+      z-index: 2;
+      margin-right: 2px;  // Slight gap for hover lines
+
+      a {
+        color: white;
+
+        .mobile-nav-icon {
+          display: inline-block;
+          width: 20px;
+        }
+
+        .mobile-nav-icon-contents {
+          display: none;
+        }
+      }
+
+    }
+    li.active, li:hover {
+      a {
+        text-decoration: none;
+      }
+
+      .mobile-nav-icon-contents {
+        display: block;
+      }
+
+    }
+  }
+}
 
 
 /* END MAIN SECTION */
@@ -336,6 +451,20 @@ body {
 
   float: left;
   margin: 20px;
+}
+
+@media (max-width: $screensize-threshold-medium) {  // i.e. when screen is small
+  .gallery-thumbnail {
+    float: none;
+
+    div {
+      text-align: center;
+    }
+    img {
+      width: 35%;
+      height: auto;
+    }
+  }
 }
 /* END GALLERY */
 
@@ -394,6 +523,9 @@ body {
 /* END TEXT IMAGES */
 
 /* CONTACT FORM */
+.contact-form {
+  padding-bottom: 100px;    // To extend beyond bottom of submit button (floated right)
+}
 .contact-field {
   margin-bottom: 10px;
 

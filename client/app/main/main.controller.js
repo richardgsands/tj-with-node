@@ -166,6 +166,10 @@ angular.module('tjWithNodeApp')
             return ('/main' + viewLocation) === $location.path();
         };
 
+        $scope.showMobileMenu = false;
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+          $scope.showMobileMenu = false;
+        });
 
         /* IMAGES */
         $scope.carouselImages = carouselImages;

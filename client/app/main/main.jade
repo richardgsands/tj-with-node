@@ -1,4 +1,4 @@
-.container
+.container.min-height-100pc
   // Fixed-position
   .sidepane
     .header-full
@@ -49,12 +49,24 @@
 
 
   // Main section
-  .main-content
-    div
+  .main-content.min-height-100pc(ng-class="{'slide-left': showMobileMenu}")
+    .header-logo-container
       img.header-logo(src="assets/images/background_vectorized.png")
-    // Sections
-    div {{$location}}
-    ul.nav
+      // Mobile navbar button
+      .hamburger.small-screen-only(ng-click="showMobileMenu=!showMobileMenu", ng-class="{active: showMobileMenu}")
+        .hamburger-line
+        .hamburger-line
+        .hamburger-line
+      // Stave background against header for mobile version
+      .stave-background.small-screen-only
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+
+    // Full screen navbar
+    ul.nav.medium-or-large-screen-only
       li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
         //a(href='#{{section.url}}') {{section.title}}
         a(ui-sref="{{section.state}}") {{section.title}}
@@ -66,5 +78,15 @@
         .stave-background-line
 
     // View content
-    .view-content
-      div(ui-view="")
+    .view-content.min-height-100pc
+      .min-height-100pc(ui-view="")
+
+  .mobile-menu.small-screen-only
+    ul
+      li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
+        //a(href='#{{section.url}}') {{section.title}}
+        a(data-ui-sref="{{section.state}}", data-ng-click="showMobileMenu=false")
+          span.mobile-nav-icon
+            span.mobile-nav-icon-contents >
+          span.mobile-nav-text {{section.title}}
+

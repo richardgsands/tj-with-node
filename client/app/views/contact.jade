@@ -1,5 +1,5 @@
 .alert.alert-danger(ng-show="error") Error sending message: {{error}}
-form(ng-submit="submit()", ng-hide="success")
+form.contact-form(ng-submit="submit()", ng-hide="success")
   .contact-field
     .contact-field-label Your name
     input(ng-model="message.name", required="")
