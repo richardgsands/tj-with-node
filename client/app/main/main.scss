@@ -27,6 +27,10 @@ $mobile-menu-width: 150px;
 .max-width-30pc { max-width: 30%; }
 .width-100-pc { width: 100%; }
 
+html, body {
+  height: 100%;
+}
+
 body {
   position: relative;   // For mobile-menu
 }
