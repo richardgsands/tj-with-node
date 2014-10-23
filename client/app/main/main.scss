@@ -26,8 +26,9 @@ $mobile-menu-width: 150px;
 .max-width-100pc { max-width: 100%; }
 .max-width-30pc { max-width: 30%; }
 .width-100-pc { width: 100%; }
+.height-100pc { height: 100%; }
 
-html, body {
+html, body, div[ui-view] {
   height: 100%;
 }
 
@@ -426,14 +427,8 @@ body {
   background: $brand-primary;
   z-index: 1;
 
-  transform: translateX($mobile-menu-width);
-  -webkit-transition: transform 0.5s;
-  -moz-transition: transform 0.5s;
-  -ms-transition: transform 0.5s;
-  -o-transition: transform 0.5s;
-  transition: transform 0.5s;
   &.slide-left {
-    transform: translateX(0px);
+
   }
 
   ul {

@@ -1,4 +1,4 @@
-.container.min-height-100pc
+.container.height-100pc
   // Fixed-position
   .sidepane
     .header-full
@@ -49,7 +49,7 @@
 
 
   // Main section
-  .main-content.min-height-100pc(ng-class="{'slide-left': showMobileMenu}")
+  .main-content.height-100pc(ng-class="{'slide-left': showMobileMenu}")
     .header-logo-container
       img.header-logo(src="assets/images/background_vectorized.png")
       // Mobile navbar button
@@ -76,8 +76,8 @@
         .stave-background-line
 
     // View content
-    .view-content.min-height-100pc
-      .min-height-100pc(ui-view="")
+    .view-content.height-100pc
+      div(ui-view="", ng-class="height-100pc")
 
   .mobile-menu.small-screen-only(ng-class="{'slide-left': showMobileMenu}")
     ul
