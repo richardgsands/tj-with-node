@@ -7,7 +7,8 @@
   // Links
   .margin-top
     a(ng-repeat="link in links", href="{{link.link}}", target="_blank").link-item
-      .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon
       div
-        .title {{link.title}}
+        .glyphicon.glyphicon-link.margin-right.valign-middle.link-item-icon.inline-block
+        .title.inline-block {{link.title}}
+      div
         .description {{link.description}}
