@@ -79,7 +79,7 @@
     .view-content.min-height-100pc
       .min-height-100pc(ui-view="")
 
-  .mobile-menu.small-screen-only
+  .mobile-menu.small-screen-only(ng-class="{'slide-left': showMobileMenu}")
     ul
       li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
         //a(href='#{{section.url}}') {{section.title}}
