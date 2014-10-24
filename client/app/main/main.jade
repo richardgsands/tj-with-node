@@ -51,7 +51,8 @@
   // Main section
   .main-content.height-100pc(ng-class="{'slide-left': showMobileMenu}")
     .header-logo-container
-      a(ui-sref="{{navSectionPrimaryContent.state}}")
+      //a(ui-sref="{{navSectionPrimaryContent.state}}")
+      a(ng-click="toggleMobileMenu()")
         img.header-logo(src="assets/images/background_vectorized_edited.png")
         .stave-background.small-screen-only.mobile
           .stave-background-line
@@ -60,7 +61,7 @@
           .stave-background-line
           .stave-background-line
       // Mobile navbar button
-      .hamburger.small-screen-only.clickable(ng-click="showMobileMenu=!showMobileMenu", ng-class="{active: showMobileMenu}")
+      .hamburger.small-screen-only.clickable(ng-click="toggleMobileMenu()", ng-class="{active: showMobileMenu}")
         span.glyphicon.glyphicon-chevron-down.hamburger-glyphicon
       // Stave background against header for mobile version
 

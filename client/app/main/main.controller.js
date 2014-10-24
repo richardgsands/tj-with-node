@@ -169,6 +169,9 @@ angular.module('tjWithNodeApp')
         };
 
         $scope.showMobileMenu = false;
+        $scope.toggleMobileMenu = function() {
+          $scope.showMobileMenu = !$scope.showMobileMenu;
+        }
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
           $scope.showMobileMenu = false;
         });
