@@ -51,17 +51,18 @@
   // Main section
   .main-content.height-100pc(ng-class="{'slide-left': showMobileMenu}")
     .header-logo-container
-      img.header-logo(src="assets/images/background_vectorized.png")
+      a(ui-sref="{{navSectionPrimaryContent.state}}")
+        img.header-logo(src="assets/images/background_vectorized_edited.png")
+        .stave-background.small-screen-only.mobile
+          .stave-background-line
+          .stave-background-line
+          .stave-background-line
+          .stave-background-line
+          .stave-background-line
       // Mobile navbar button
-      .hamburger.small-screen-only(ng-click="showMobileMenu=!showMobileMenu", ng-class="{active: showMobileMenu}")
-        span.glyphicon.glyphicon-collapse-down.hamburger-glyphicon
+      .hamburger.small-screen-only.clickable(ng-click="showMobileMenu=!showMobileMenu", ng-class="{active: showMobileMenu}")
+        span.glyphicon.glyphicon-chevron-down.hamburger-glyphicon
       // Stave background against header for mobile version
-      .stave-background.small-screen-only
-        .stave-background-line
-        .stave-background-line
-        .stave-background-line
-        .stave-background-line
-        .stave-background-line
 
     // Full screen navbar
     ul.nav.medium-or-large-screen-only
@@ -77,7 +78,7 @@
 
     // View content
     .view-content.height-100pc
-      div(ui-view="", ng-class="height-100pc")
+      div(ui-view="")
 
   .mobile-menu.small-screen-only(ng-class="{'slide-left': showMobileMenu}")
     ul

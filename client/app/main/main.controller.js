@@ -11,6 +11,7 @@ var navSections = [
     { title: 'Links',       state: 'main.links',        url: '/links' },
     { title: 'Twitter',     state: 'main.twitter',      url: '/twitter',        controller: 'TwitterCtrl',    hideLink: true }
 ];
+var navSectionPrimaryContent = navSections[1];   // Biography
 
 var carouselImages = [
     'assets/images/carousel/gallery4_crsl.JPG',
@@ -159,6 +160,7 @@ angular.module('tjWithNodeApp')
 
         /* NAVIGATION */
         $scope.navSections = navSections;
+        $scope.navSectionPrimaryContent = navSectionPrimaryContent;
         $rootScope.$on("$locationChangeStart", function(event, next, current) {
             $scope.path = next;
         });

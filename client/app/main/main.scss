@@ -302,7 +302,7 @@ body {
 }
 
 .header-logo {
-  width: 650px;
+  width: 600px;
   //margin-top: 10px;
 }
 
@@ -312,9 +312,10 @@ body {
   }
 }
 
+// Mobile logo
 @media (max-width: $screensize-threshold-medium) {
   .header-logo {
-    width: 304px;
+    width: 254px;
   }
 }
 
@@ -349,7 +350,12 @@ body {
     width: 100%;
     top: 0;
     left: 0;
+
+    &.mobile {
+      width: 50px;
+    }
   }
+
 }
 
 // Background stave effect
@@ -365,9 +371,10 @@ body {
 @media (max-width: $screensize-threshold-medium) {   // Small screen
   .stave-background{      // Fixed size for small screen
     position: absolute;
-    top: 20px;
+    top: 17px;
     left: 0;
     width: 100%;
+    //width: 242px;
   }
 }
 
