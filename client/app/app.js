@@ -8,7 +8,8 @@ angular.module('tjWithNodeApp', [
   //'ngRoute',
   'ui.bootstrap',
   'mediaPlayer',
-  'angularMoment'
+  'angularMoment',
+  'ngTouch'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
