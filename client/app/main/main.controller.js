@@ -161,7 +161,7 @@ var links = [
 ];
 
 angular.module('tjWithNodeApp')
-    .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location) {
+    .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location, amDateFormatFilter) {
 
         /* NAVIGATION */
         $scope.navSections = navSections;
@@ -224,6 +224,12 @@ angular.module('tjWithNodeApp')
                             event.timeFromNow = "Starts " + getDaysFromNowDisplay( event.startDate );
                         }
 
+                        // Set dateStr
+                        if ( moment(event.endDate).isSame(moment(event.startDate), 'day') ) {
+                          event.dateStr = amDateFormatFilter(moment(event.startDate), 'ddd, DD MMM');
+                        } else {
+                          event.dateStr = amDateFormatFilter(moment(event.startDate), 'ddd, DD MMM') + ' to ' + amDateFormatFilter(moment(event.endDate), 'ddd, DD MMM');
+                        }
 
                         return true;
                     };

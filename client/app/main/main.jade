@@ -42,12 +42,12 @@
               a(ng-if="event.link", href="{{event.link}}", target="_blank")
                 .event-item-title {{event.name}}
                 .event-item-location {{event.location}}
-                .event-item-date {{event.startDate|amDateFormat:'ddd, DD MMM'}} to {{event.endDate|amDateFormat:'ddd, DD MMM'}}
+                .event-item-date {{event.dateStr}}
                 .event-item-timeago {{event.timeFromNow}}
               div(ng-if="!event.link")
                 .event-item-title {{event.name}}
                 .event-item-location {{event.location}}
-                .event-item-date {{event.startDate|amDateFormat:'ddd, DD MMM'}} to {{event.endDate|amDateFormat:'ddd, DD MMM'}}
+                .event-item-date {{event.dateStr}}
                 .event-item-timeago {{event.timeFromNow}}
 
   // Main section
