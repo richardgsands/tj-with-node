@@ -188,7 +188,7 @@ body {
           color: inherit;
         }
 
-        &:hover {
+        &.clickable:hover {
           opacity: 1;
           a {
             text-decoration: none;
