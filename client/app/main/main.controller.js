@@ -109,6 +109,11 @@ var links = [
         "link": "http://www.jillkemp.com/"
     },
     {
+      "title": "Graham Neal",
+      "description": "Tenor",
+      "link": "http://www.grahamneal.com"
+    },
+    {
         "title": "Bernard Heyes",
         "description": "Composer",
         "link": "http://www.bernardheyes.org.uk/"
