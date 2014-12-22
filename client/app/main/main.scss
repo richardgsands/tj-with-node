@@ -694,3 +694,20 @@ button.contact-submit {
     background: darken($brand-primary, 5%);
   }
 }
+
+/* ADMIN */
+.admin-footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+
+  background: white;
+  z-index: 1;
+  border-top: solid 1px black;
+
+  transition: height 0.5s linear;
+}
+.admin-footer:hover {
+  height: 400px;
+}

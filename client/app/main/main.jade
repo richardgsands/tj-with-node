@@ -40,15 +40,9 @@
           .event-list
             .event-item(ng-repeat="event in upcomingEvents", ng-class="{clickable: event.link}")
               a(ng-if="event.link", href="{{event.link}}", target="_blank")
-                .event-item-title {{event.name}}
-                .event-item-location {{event.location}}
-                .event-item-date {{event.dateStr}}
-                .event-item-timeago {{event.timeFromNow}}
+                upcoming-event(event='event', isAdmin='isAdmin')
               div(ng-if="!event.link")
-                .event-item-title {{event.name}}
-                .event-item-location {{event.location}}
-                .event-item-date {{event.dateStr}}
-                .event-item-timeago {{event.timeFromNow}}
+                upcoming-event(event='event', isAdmin='isAdmin')
 
   // Main section
   .main-content.height-100pc(ng-class="{'slide-left': showMobileMenu}")
@@ -94,3 +88,6 @@
             span.mobile-nav-icon-contents >
           span.mobile-nav-text {{section.title}}
 
+
+  // ADMIN
+  .admin-footer(ng-if="isAdmin")

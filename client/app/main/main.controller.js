@@ -163,6 +163,9 @@ var links = [
 angular.module('tjWithNodeApp')
     .controller('MainCtrl', function ($scope, $rootScope, $http, $interval, $location, amDateFormatFilter) {
 
+        /* ADMIN */
+        $scope.isAdmin = true;
+
         /* NAVIGATION */
         $scope.navSections = navSections;
         $scope.navSectionPrimaryContent = navSectionPrimaryContent;
@@ -386,4 +389,15 @@ angular.module('tjWithNodeApp')
 
         }
 
-    });
+    })
+
+    .directive('upcomingEvent', function() {
+      return {
+        restrict:'E',
+        scope: {
+          event: '=',
+          isAdmin: '='
+        },
+        template: '<div class="event-item-title">{{event.name}}</div><div class="event-item-location">{{event.location}}</div><div class="event-item-date">{{event.dateStr}}</div><div class="event-item-timeago">{{event.timeFromNow}}</div>'
+      };
+    })
