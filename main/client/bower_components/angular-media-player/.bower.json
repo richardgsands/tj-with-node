@@ -1,0 +1,39 @@
+{
+  "name": "angular-media-player",
+  "version": "0.5.6",
+  "main": "dist/angular-media-player.min.js",
+  "keywords": [
+    "angular",
+    "angular.js",
+    "angularjs",
+    "audio",
+    "video",
+    "media",
+    "player",
+    "playlist"
+  ],
+  "ignore": [
+    "node_modules",
+    "docs",
+    "test"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.0",
+    "angular-mocks": "~1.2.0",
+    "angular-route": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-dragdrop": "ganarajpr/angular-dragdrop#master",
+    "github-fork-ribbon-css": "~0.1.0"
+  },
+  "homepage": "https://github.com/mrgamer/angular-media-player",
+  "_release": "0.5.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.5.6",
+    "commit": "4b56f9071928261ea520e7b4b72f0f0af4711b7c"
+  },
+  "_source": "git://github.com/mrgamer/angular-media-player.git",
+  "_target": "~0.5.6",
+  "_originalSource": "angular-media-player",
+  "_direct": true
+}
