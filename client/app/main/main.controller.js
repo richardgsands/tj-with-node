@@ -165,6 +165,7 @@ angular.module('tjWithNodeApp')
 
         /* ADMIN */
         $scope.isAdmin = true;
+        $scope.showAdminPanel = false;
 
         /* NAVIGATION */
         $scope.navSections = navSections;
@@ -395,8 +396,7 @@ angular.module('tjWithNodeApp')
       return {
         restrict:'E',
         scope: {
-          event: '=',
-          isAdmin: '='
+          event: '='
         },
         template: '<div class="event-item-title">{{event.name}}</div><div class="event-item-location">{{event.location}}</div><div class="event-item-date">{{event.dateStr}}</div><div class="event-item-timeago">{{event.timeFromNow}}</div>'
       };

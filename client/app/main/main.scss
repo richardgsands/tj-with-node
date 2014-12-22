@@ -703,11 +703,16 @@ button.contact-submit {
   height: 50px;
 
   background: white;
-  z-index: 1;
+  opacity: 0.8;
+  z-index: 999;
   border-top: solid 1px black;
 
   transition: height 0.5s linear;
+  
+  i {
+    font-size: 24px;
+  }
 }
-.admin-footer:hover {
+.admin-footer.show {
   height: 400px;
 }

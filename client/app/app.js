@@ -21,7 +21,7 @@ angular.module('tjWithNodeApp', [
         .html5Mode(true)
         .hashPrefix('!');
 
-    $stateProvider.state('main', {
+      $stateProvider.state('main', {
         url: "/main",
         templateUrl: "app/main/main.html",
         controller: 'MainCtrl'
