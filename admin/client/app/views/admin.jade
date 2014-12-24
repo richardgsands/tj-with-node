@@ -1,0 +1,11 @@
+.align-center.relative
+  .align-left.margin-bottom
+    button(ng-click="addEvent()") Add new event
+    button.margin-left(ng-show="adminGridSelections.length", ng-click="removeEvent(adminGridSelections[0])") Remove selected
+    button.pull-right.btn-danger(ng-click="pushEventsToLive()") Push to live website
+  .align-left.panel.panel-danger(ng-show="error")
+    div There was an error: {{error}}
+  .align-left.panel.panel-info(ng-show="success")
+    div Successfully updated!
+  style .ngGrid { height: 800px; }
+  div(ng-grid="adminGridOptions")

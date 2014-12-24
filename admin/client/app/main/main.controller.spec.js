@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('tjWithNodeAdminApp'));
+  beforeEach(module('tjWithNodeApp'));
 
   var MainCtrl,
       scope,

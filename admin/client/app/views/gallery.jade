@@ -1,0 +1,6 @@
+.small-screen-only.margin-top
+.gallery-thumbnails.width-100-pc
+  div(ng-repeat="image in galleryImages")
+    a.gallery-thumbnail(rel='fancybox-thumb', href="{{galleryImagesLocationHires}}{{image.image}}")
+      div
+        img(ng-src="{{galleryImagesLocationLores}}{{image.image}}")

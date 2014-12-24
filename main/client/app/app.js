@@ -5,7 +5,6 @@ angular.module('tjWithNodeApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  //'ngRoute',
   'ui.bootstrap',
   'mediaPlayer',
   'angularMoment',

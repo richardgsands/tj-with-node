@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tjWithNodeAdminApp')
+angular.module('tjWithNodeApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
       'title': 'Home',
