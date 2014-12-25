@@ -15,7 +15,7 @@ angular.module('tjWithNodeApp', [
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     // For any unmatched url, redirect to /
-    $urlRouterProvider.otherwise("/main/");
+    $urlRouterProvider.otherwise("/main/admin");
 
     $locationProvider
         .html5Mode(true)

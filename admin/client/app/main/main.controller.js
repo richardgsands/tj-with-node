@@ -14,7 +14,7 @@
 //var navSectionPrimaryContent = navSections[1];   // Biography
 
 var navSections = [
-  { title: 'Admin',        state: 'main.home',         url: '/',  controller: 'AdminCtrl' , templateUrl: 'app/views/admin.html'}
+  { title: 'Admin',        state: 'main.home',         url: '/admin',  controller: 'AdminCtrl' , templateUrl: 'app/views/admin.html'}
 ];
 var navSectionPrimaryContent = navSections[0];   // Biography
 
