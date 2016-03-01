@@ -485,6 +485,20 @@ body {
   }
 }
 
+.education-link {
+  display: block;
+  width: 50%;
+  
+  img {
+    width: 100%;
+  }
+}
+@media (max-width: $screensize-threshold-large) {
+  // Small screen size
+  .education-link {
+    width: 100%;
+  }
+}
 
 /* END MAIN SECTION */
 

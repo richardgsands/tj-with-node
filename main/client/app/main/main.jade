@@ -23,7 +23,8 @@
             marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
             span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
           div(ng-repeat="track in tracks") {{track.path}}
-          audio(ng-if="loadAudioControl", media-player="audio", playlist="tracks")
+          //- audio(ng-if="loadAudioControl", media-player="audio", playlist="tracks")
+          audio(media-player="audio", playlist="tracks")
           .track-list(ng-show="showTrackList")
             .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
               span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon

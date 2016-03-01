@@ -89,6 +89,11 @@ var tracks = [
 
 var links = [
     {
+        "title": "Clarinet Tutorial",
+        "description": "How to correctly assemble a clarinet",
+        "link": "http://howtoassembleaclarinet.co.uk"
+    },
+    {
         "title": "Trillium",
         "description": "Two flutes and piano",
         "link": "http://www.facebook.com/pages/Trillium/203895322979643?sk=info"
@@ -261,7 +266,7 @@ angular.module('tjWithNodeApp')
 
         /* AUDIO */
 
-        $scope.loadAudioControl = false;
+        // $scope.loadAudioControl = false;
         $scope.playing = false;
         $scope.tracks = tracks;
         $scope.currentTrackIndex = 0;
@@ -270,7 +275,7 @@ angular.module('tjWithNodeApp')
         $scope.togglePlaying = function() {
             $scope.playing = !$scope.playing;
             if ($scope.playing) {
-                if (!$scope.loadAudioControl) loadAudio();
+                // if (!$scope.loadAudioControl) loadAudio();
                 $scope.audio.play();
             } else {
                 $scope.audio.pause();
@@ -311,15 +316,15 @@ angular.module('tjWithNodeApp')
 
         function refreshTrack() {
             $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
-            if (!$scope.loadAudioControl) loadAudio();
+            // if (!$scope.loadAudioControl) loadAudio();
             $scope.audio.play($scope.currentTrackIndex);
         }
 
         function loadAudio() {
-          $scope.loadAudioControl = true;
+          // $scope.loadAudioControl = true;
 
-          // Bind audio events (using timeout to ensure audio control is initialised)
-          setTimeout(function() {
+          // // Bind audio events (using timeout to ensure audio control is initialised)
+          // setTimeout(function() {
 
             $scope.audio.on('loadeddata', function (evt) {
               // Zero based array        // One based array
@@ -327,7 +332,7 @@ angular.module('tjWithNodeApp')
               $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
             });
 
-          }, 1000);
+          // }, 1000);
         }
 
 
