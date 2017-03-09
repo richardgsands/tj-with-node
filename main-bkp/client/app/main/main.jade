@@ -1,0 +1,101 @@
+.container.height-100pc
+  // Fixed-position
+  .sidepane
+    .header-full
+      .header-carousel
+        // Dissolving Carousel
+        .image-container
+          .img-dummy
+          img(ng-repeat="image in carouselImages", ng-src="{{image}}", ng-class="{show: $index==currentImageIndex}")
+        // Audio player
+        .sidepane-container.audio-container.margin-top
+          .widget-control(ng-click="togglePlaying()", ng-class="{playing: playing}")
+            div(ng-hide="playing")
+              span.glyphicon.glyphicon-volume-up.spacer-right.valign-middle
+              span.valign-middle Listen
+            div(ng-show="playing")
+              span.glyphicon.glyphicon-volume-off.spacer-right.valign-middle
+              span.valign-middle Stop listening
+          .sidebar-section-fade.listen-display.margin-top-sm(ng-class="{playing: playing}")
+            span.listen-track-button.glyphicon.glyphicon-step-backward.spacer-right.valign-middle.pull-left(ng-click="previousTrack()", ng-disabled="!playing")
+            span(ng-hide="playing") No track selected
+            //span {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+            marquee(ng-show="playing", behavior="scroll",direction="left") {{currentTrack.composer}} - {{currentTrack.title}} ({{currentTrack.instrument}})
+            span.listen-track-button.glyphicon.glyphicon-step-forward.spacer-right.valign-middle.pull-right(ng-click="nextTrack()", ng-disabled="!playing")
+          div(ng-repeat="track in tracks") {{track.path}}
+          audio(ng-if="loadAudioControl", media-player="audio", playlist="tracks")
+          .track-list(ng-show="showTrackList")
+            .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
+              span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon
+              span.track-item-text {{track.composer}} - {{track.title}} ({{track.instrument}})
+          .widget-control.font-sm.align-center.margin-top-sm
+            div(ng-click="showTrackList=!showTrackList")
+              span(ng-show="!showTrackList") View all tracks
+              span(ng-show="showTrackList") Hide tracks
+
+        .sidepane-container.events-container(ng-if="upcomingEvents.length")
+          .events-container-header
+            span.glyphicon.glyphicon-calendar.spacer-right.valign-middle
+            span.valign-middle Upcoming events
+          .event-list
+            .event-item(ng-repeat="event in upcomingEvents", ng-class="{clickable: event.link}")
+              a(ng-if="event.link", href="{{event.link}}", target="_blank")
+                upcoming-event(event='event', isAdmin='isAdmin')
+              div(ng-if="!event.link")
+                upcoming-event(event='event', isAdmin='isAdmin')
+
+  // Main section
+  .main-content.height-100pc(ng-class="{'slide-left': showMobileMenu}")
+    .header-logo-container
+      //a(ui-sref="{{navSectionPrimaryContent.state}}")
+      .relative
+        img.header-logo(src="assets/images/background_vectorized_edited.png")
+        //img.header-logo(src="assets/images/background_vectorized_edited_xmas.png")
+        .absolute-overlay.small-screen-only(ng-click="toggleMobileMenu()")
+      .stave-background.small-screen-only.mobile
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+
+      // Mobile navbar button
+      .hamburger.small-screen-only.clickable(ng-click="toggleMobileMenu()", ng-class="{active: showMobileMenu}")
+        span.glyphicon.glyphicon-chevron-down.hamburger-glyphicon
+      // Stave background against header for mobile version
+
+    // Full screen navbar
+    ul.nav.medium-or-large-screen-only
+      li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
+        //a(href='#{{section.url}}') {{section.title}}
+        a(ui-sref="{{section.state}}") {{section.title}}
+      .stave-background
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+        .stave-background-line
+
+    // View content
+    .view-content.height-100pc
+      div(ui-view="")
+
+  .mobile-menu.small-screen-only(ng-class="{'slide-left': showMobileMenu}")
+    ul
+      li(ng-repeat="section in navSections", ng-if="!section.hideLink" ng-class="{ 'active': isActive('{{section.url}}'), 'small-screen-only': section.smallScreenOnly }")
+        //a(href='#{{section.url}}') {{section.title}}
+        a(data-ui-sref="{{section.state}}", data-ng-click="showMobileMenu=false")
+          span.mobile-nav-icon
+            span.mobile-nav-icon-contents >
+          span.mobile-nav-text {{section.title}}
+
+
+  //// ADMIN
+  //.admin-footer(ng-if="isAdmin", ng-class="{show: showAdminPanel}")
+  //  .row(ng-click="showAdminPanel=!showAdminPanel")
+  //    .col-md-12
+  //      .pull-right
+  //        i.glyphicon.glyphicon-chevron-up
+  //  .row
+  //    .col-md-12
+  //      div(ng-grid="{ data: upcomingEvents }")

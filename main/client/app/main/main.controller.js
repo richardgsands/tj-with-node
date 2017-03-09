@@ -89,6 +89,11 @@ var tracks = [
 
 var links = [
     {
+        "title": "Clarinet Tutorial",
+        "description": "How to correctly assemble a clarinet",
+        "link": "http://howtoassembleaclarinet.co.uk"
+    },
+    {
         "title": "Trillium",
         "description": "Two flutes and piano",
         "link": "http://www.facebook.com/pages/Trillium/203895322979643?sk=info"
@@ -203,7 +208,6 @@ angular.module('tjWithNodeApp')
         // Get static JSON
         $http.get('assets/cms/upcomingEvents.json', $scope.message, {timeout: 5000})
             .success(function(response) {
-                console.log(response);
                 var allEvents = response;
                 allEvents = allEvents || [];
 
@@ -262,6 +266,7 @@ angular.module('tjWithNodeApp')
 
         /* AUDIO */
 
+        // $scope.loadAudioControl = false;
         $scope.playing = false;
         $scope.tracks = tracks;
         $scope.currentTrackIndex = 0;
@@ -270,6 +275,7 @@ angular.module('tjWithNodeApp')
         $scope.togglePlaying = function() {
             $scope.playing = !$scope.playing;
             if ($scope.playing) {
+                // if (!$scope.loadAudioControl) loadAudio();
                 $scope.audio.play();
             } else {
                 $scope.audio.pause();
@@ -310,19 +316,24 @@ angular.module('tjWithNodeApp')
 
         function refreshTrack() {
             $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
+            // if (!$scope.loadAudioControl) loadAudio();
             $scope.audio.play($scope.currentTrackIndex);
         }
 
-        // Bind audio events (using timeout to ensure audio control is initialised)
-        setTimeout(function() {
+        function loadAudio() {
+          // $scope.loadAudioControl = true;
+
+          // // Bind audio events (using timeout to ensure audio control is initialised)
+          // setTimeout(function() {
 
             $scope.audio.on('loadeddata', function (evt) {
-                // Zero based array        // One based array
-                $scope.currentTrackIndex = $scope.audio.currentTrack - 1;
-                $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
+              // Zero based array        // One based array
+              $scope.currentTrackIndex = $scope.audio.currentTrack - 1;
+              $scope.currentTrack = $scope.tracks[$scope.currentTrackIndex];
             });
 
-        }, 1000);
+          // }, 1000);
+        }
 
 
     })
