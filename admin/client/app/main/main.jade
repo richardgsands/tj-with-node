@@ -6,7 +6,7 @@
         // Dissolving Carousel
         .image-container
           .img-dummy
-          img(ng-repeat="image in carouselImages", ng-src="{{image}}", ng-class="{show: $index==currentImageIndex}")
+            .img-admin-placeholder &nbsp;
         // Audio player
         .sidepane-container.audio-container.margin-top
           .widget-control(ng-click="togglePlaying()", ng-class="{playing: playing}")
@@ -25,9 +25,8 @@
           div(ng-repeat="track in tracks") {{track.path}}
           audio(media-player="audio", playlist="tracks")
           .track-list(ng-show="showTrackList")
-            .track-item(ng-repeat="track in tracks", ng-click="playTrack($index)", ng-class="{playing: playing && currentTrackIndex==$index}")
-              span.glyphicon.glyphicon-volume-up.margin-right.valign-middle.track-item-icon
-              span.track-item-text {{track.composer}} - {{track.title}} ({{track.instrument}})
+            .track-item
+              span.track-item-text (No tracks in admin console)
           .widget-control.font-sm.align-center.margin-top-sm
             div(ng-click="showTrackList=!showTrackList")
               span(ng-show="!showTrackList") View all tracks

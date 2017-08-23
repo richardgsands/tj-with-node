@@ -128,7 +128,7 @@ body {
         padding-top: (500/800) * 100%; /* For 800 x 500 aspect ratio images */
       }
 
-      img {
+      img, .img-admin-placeholder {
         // Fit to size of .image-container
         position: absolute;
         top: 0;
@@ -146,6 +146,11 @@ body {
         &.show {
           opacity: 1;
         }
+      }
+      .img-admin-placeholder {
+        height: 100%;
+        background: white;
+        opacity: 0.1;
       }
 
     }
