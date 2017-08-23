@@ -6,6 +6,7 @@
         // Dissolving Carousel
         .image-container
           .img-dummy
+            .img-admin-placeholder &nbsp;
           img(ng-repeat="image in carouselImages", ng-src="{{image}}", ng-class="{show: $index==currentImageIndex}")
         // Audio player
         .sidepane-container.audio-container.margin-top
