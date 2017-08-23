@@ -1,4 +1,3 @@
-// Generated on 2014-12-22 using generator-angular-fullstack 2.0.13
 'use strict';
 
 module.exports = function (grunt) {
@@ -619,6 +618,21 @@ module.exports = function (grunt) {
       'wait',
       'open',
       'watch'
+    ]);
+  });
+
+  // builds everything built by grunt serve (with no 'target' parameter), but doesn't run server
+  // eventually, grunt build should be used, but linking/renaming not working at the moment for proper dist
+  grunt.registerTask('refresh', function() {
+    grunt.task.run([
+      'clean:server',
+      'env:all',
+      'injector:sass',
+      'concurrent:server',
+      'injector',
+      'wiredep',
+      'autoprefixer',
+      'express:dev'
     ]);
   });
 
