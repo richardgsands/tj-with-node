@@ -1,5 +1,0 @@
-# robotstxt.org
-
-User-agent: *
-
-Sitemap: http://www.tracyjames.co.uk/sitemap.txt
