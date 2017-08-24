@@ -8,4 +8,5 @@ client/bower_components
 dist
 /server/config/local.env.js
 .DS_Store
-client/assets/cms
+main/client/assets/cms
+admin/server/settings.json
