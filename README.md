@@ -41,18 +41,32 @@ grunt refresh
 ```
 
 ### Install and build admin
+Switch to admin directory
 ```
 cd ../admin
+```
+
+**Create settings file (admin app won't work without this):**
+```
+touch server/settings.json
+```
+
+Edit the settings file to set username and password. It should have the following format:
+```json
+{
+  "adminUser": "admin",
+  "adminPass": "password"
+}
+```
+
+Then install dependencies and build:
+```
 npm install
 bower install --allow-root
 grunt refresh
 ```
 
-### Define settings
-
-*Todo...*
-
-### Start web server!
+### Start web server...!
 
 Start main and admin web servers using forever:
 ```
