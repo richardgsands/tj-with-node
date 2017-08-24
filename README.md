@@ -35,7 +35,7 @@ cd main
 npm install
 bower install --allow-root
 ```
-Run `grunt refresh` to compile Sass, etc. **This step needs to be done after any file changes to compile website** (See App Architecture below for details of file.s)
+Run `grunt refresh` to compile Sass, etc. **This step needs to be done after any file changes to compile website** (See App Architecture below for details of files.)
 ```
 grunt refresh
 ```
@@ -58,6 +58,7 @@ Edit the settings file to set username and password. It should have the followin
   "adminPass": "password"
 }
 ```
+*If these are changed after starting the NodeJS server, a restart (of the NodeJS server) will be required*
 
 Then install dependencies and build:
 ```
